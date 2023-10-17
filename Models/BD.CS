@@ -18,25 +18,35 @@ public static class BD
         return Series;
     }
 
-    public static List<Actores> ObtnerActores(int IdSerie)
+    public static List<string> Sinopsis()
+    {
+        string sql = "";
+        using(SqlConnection db = new SqlConnection(ConnectionString))
+        {
+            sql = "Select Siniposis from Series where IdSerie = @vIdSerie";
+            
+        }
+    } 
+
+    public static List<Actores> ObtenerActores(int IdSerie)
     {
         string sql = "";
         List<Actores> Actores = new List<Actores>();
         using(SqlConnection db = new SqlConnection(ConnectionString))
         {
-            sql = "Select * from Actores where IdActor = vIdActor";
+            sql = "Select * from Actores where IdActor = @vIdActor";
             Actores = db.Query<Actores>(sql, new{vIdActor = IdSerie}).ToList();
         }
         return Actores;
     }
 
-    public static  List<Temporadas> ObtnerTemporadas(int IdSerie)
+    public static  List<Temporadas> ObtenerTemporadas(int IdSerie)
     {
         string sql = "";
         List<Temporadas> Temporadas = new List<Temporadas>();
         using(SqlConnection db = new SqlConnection(ConnectionString))
         {
-            sql = "Select * from Temporadas where IdTemporada = vIdTemporada ";
+            sql = "Select * from Temporadas where IdTemporada = @vIdTemporada ";
             Temporadas = db.Query<Temporadas>(sql,new{vIdTemporada = IdSerie}).ToList();
         }
         return Temporadas;

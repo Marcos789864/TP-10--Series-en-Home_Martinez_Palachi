@@ -20,16 +20,22 @@ public class HomeController : Controller
     }
 
 
-    public Actores VerDetalleActores(int IdActor)
+    public List<Actores> VerDetalleActores(int IdSerie)
     {
-        List<Actores> Actores = BD.ObtnerActores(IdActor);
-        return Actores[IdActor];
+         ViewBag.Actores = BD.ObtenerActores(IdSerie);
+        return ViewBag.Actores;
     }
 
     public List<Temporadas> VerDetallesTemporadas(int IdSerie)
     {
-        List<Temporadas> Temporadas = BD.ObtnerTemporadas(IdSerie);
-        return Temporadas;
+        ViewBag.Temporadas = BD.ObtenerTemporadas(IdSerie);
+        return ViewBag.Temporadas;
+    }
+
+    public List<Series> MostrarMasInfo()
+    {
+        ViewBag.Info = BD.ObtenerSeries();
+        return ViewBag.Info;
     }
 
     
