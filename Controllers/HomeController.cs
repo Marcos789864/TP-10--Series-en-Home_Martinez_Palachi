@@ -32,9 +32,9 @@ public class HomeController : Controller
         return ViewBag.Temporadas;
     }
 
-    public List<Series> MostrarMasInfo()
+    public List<Series> MostrarMasInfo(int IdSerie)
     {
-        ViewBag.Info = BD.ObtenerSeries();
+        ViewBag.Info = BD.ObtenerSeries(IdSerie);
         return ViewBag.Info;
     }
 

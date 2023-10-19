@@ -18,14 +18,16 @@ public static class BD
         return Series;
     }
 
-    public static List<string> Sinopsis()
+    public static List<string> Sinopsis(int IdSerie)
     {
         string sql = "";
+        string List<string> Sinopsis = new List<string>;
         using(SqlConnection db = new SqlConnection(ConnectionString))
         {
             sql = "Select Siniposis from Series where IdSerie = @vIdSerie";
-            
+            Sinopsis = db.Query<string>(sql,new{vIdSerie = IdSerie});
         }
+        return Siniposis;
     } 
 
     public static List<Actores> ObtenerActores(int IdSerie)
